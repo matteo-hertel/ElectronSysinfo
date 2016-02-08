@@ -1,12 +1,10 @@
 /* jshint esnext : true */
 
-module.exports = function(){
+module.exports = function() {
 
-return `
-Your system has  {{getTotalMemory("GB")}} GB of Ram
-<hr />
-Test Binding
-<input type="text" v-model="totalMemory" />
+    return `
+Your system has  {{getTotalMemoryFriendly("GB")}} GB of RAM, the current used RAM is {{percentageMemory}}%
+<div id="chartOutput"></div>
 `;
 
 };
