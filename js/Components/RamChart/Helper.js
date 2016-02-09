@@ -2,22 +2,25 @@ module.exports = {
     convertTo: function(size, type) {
         switch (type) {
             case "KB":
-                return parseInt(size) / 1024;
+                return this.round(parseInt(size) / 1024);
 
             case "MB":
-                return parseInt(size) / 1024 / 1024;
+                return this.round(parseInt(size) / 1024 / 1024);
 
             case "GB":
-                return parseInt(size) / 1024 / 1024 / 1024;
+                return this.round(parseInt(size) / 1024 / 1024 / 1024);
 
             default:
                 return size;
 
         }
     },
+    round: function(num) {
+        return Math.round(num * 100) / 100;
+    },
     setUpChart: function(memory) {
-        var d3 = require(__dirname + "/../bower_components/d3/d3.min.js");
-        var c3 = require(__dirname + "/../bower_components/c3/c3.min.js");
+        var d3 = require(__dirname + "/../../../bower_components/d3/d3.min.js");
+        var c3 = require(__dirname + "/../../../bower_components/c3/c3.min.js");
         return c3.generate({
             bindto: '#chartOutput',
             data: {

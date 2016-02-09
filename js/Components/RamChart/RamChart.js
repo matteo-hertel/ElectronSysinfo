@@ -4,7 +4,7 @@ module.exports = function(Vue) {
     var Helper = require(__dirname + "/Helper.js");
     var chart = null;
     Vue.component("ram-chart", {
-        template: require(__dirname + "/../views/ramChartView.js")(),
+        template: require(__dirname + "/views/ramChartView.js")(),
         data: function() {
             return {
                 os: require("os"),
