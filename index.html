@@ -6,6 +6,7 @@
     <link href="./bower_components/c3/c3.min.css" rel="stylesheet" type="text/css">
     <link href="./bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="./bower_components/bootstrap-material-design/dist/css/bootstrap-material-design.min.css" rel="stylesheet" type="text/css">
+    <link href="./bower_components/animate.css/animate.min.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -15,45 +16,13 @@
                 <h2>SystemInfo</h2>
             </div>
             <div class="col-xs-8">
-                <collapsible-panel inline-template>
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title" @click="toggleview">Panel primary</h3>
-                        </div>
-                        <div class="panel-body" v-bind:class="{'collapse' : !show}">
-                            Panel content
-                        </div>
-                    </div>
+                <collapsible-panel transition="collapsing">
+                    <template slot="heading">Heading</template>
+                    <template slot="body">Panel content</template>
                 </collapsible-panel>
-                <collapsible-panel inline-template>
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title" @click="toggleview">Panel primary</h3>
-                        </div>
-                        <div class="panel-body" v-bind:class="{'collapse' : !show}">
-                            Panel content
-                        </div>
-                    </div>
-                </collapsible-panel>
-                <collapsible-panel inline-template>
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title" @click="toggleview">Panel primary</h3>
-                        </div>
-                        <div class="panel-body" v-bind:class="{'collapse' : !show}">
-                            Panel content
-                        </div>
-                    </div>
-                </collapsible-panel>
-                <collapsible-panel inline-template>
-                    <div class="panel panel-primary">
-                        <div class="panel-heading" @click="toggleview">
-                            <h3 class="panel-title">Panel primary</h3>
-                        </div>
-                        <div class="panel-body" v-bind:class="{'collapse' : !show}">
-
-                        </div>
-                    </div>
+                <collapsible-panel show="true">
+                    <template slot="heading">Heading2</template>
+                    <template slot="body">Panel content 2</template>
                 </collapsible-panel>
             </div>
             <div class="col-xs-4">
@@ -61,7 +30,6 @@
             </div>
         </div>
     </div>
-
     <script src="./js/index.js"></script>
 </body>
 

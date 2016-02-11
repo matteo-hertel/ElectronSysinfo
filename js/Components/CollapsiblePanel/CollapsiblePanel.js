@@ -1,10 +1,7 @@
 module.exports = function(Vue) {
     Vue.component("collapsible-panel", {
-        data: function() {
-            return {
-                show: false
-            };
-        },
+        template: require(__dirname + "/views/collapsiblePanelView.js")(),
+        props: ["show"],
         methods: {
             toggleview: function(e) {
                 this.show = !this.show;
