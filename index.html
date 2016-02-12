@@ -22,8 +22,20 @@
                 </collapsible-panel>
                 <collapsible-panel show="true">
                     <template slot="heading">Heading2</template>
-                    <template slot="body">Panel content 2</template>
+                    <template slot="body">
+
+                        Panel content 2
+
+                        <cpus inline-template>
+                            Your system has {{cpus.length}} virtual core based on a {{cpus[0]}} processor
+
+                        </cpus>
+
+
+                    </template>
+
                 </collapsible-panel>
+
             </div>
             <div class="col-xs-4">
                 <ram-chart></ram-chart>
