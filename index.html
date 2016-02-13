@@ -12,32 +12,56 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-xs-10">
+
                 <h2>SystemInfo</h2>
+
+            </div>
+            <div class="col-xs-2 pull-right" style="position:rerlative">
+                <h3 class="pull-right" @click="toggleSettings()">
+                                <i class="glyphicon glyphicon-wrench"></i>
+                            </h3>
+                <div v-show="showSettings" class="row animated" transition="slide">
+
+                    <div class="col-xs 12">
+                        <h3>Settings</h3>
+                        <h4>Components Visibility</h4>
+
+                    </div>
+                    <div class="row">
+
+
+                        <div class="col-xs-12" v-for="component in components">
+
+                            <input v-model="component" type="checkbox"> {{$key}} </label>
+
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-xs-8">
-                <collapsible-panel transition="collapsing">
-                    <template slot="heading">Heading</template>
-                    <template slot="body">Panel content</template>
-                </collapsible-panel>
-                <collapsible-panel show="true">
-                    <template slot="heading">Heading2</template>
+                <collapsible-panel show="true" v-show="components.Cpus">
+                    <template is="os" slot="heading">
+                        CPU
+                        <small>
+                            Your CPU
+                            <os inline-template>
+                                 {{cpus[0]}}
+                            </os>
+                        </small>
+                    </template>
                     <template slot="body">
-
-                        Panel content 2
-
-                        <cpus inline-template>
+                        <os inline-template>
                             Your system has {{cpus.length}} virtual core based on a {{cpus[0]}} processor
 
-                        </cpus>
-
+                        </os>
 
                     </template>
 
                 </collapsible-panel>
 
             </div>
-            <div class="col-xs-4">
+            <div class="col-xs-4" v-show="components.RamChart">
                 <ram-chart></ram-chart>
             </div>
         </div>

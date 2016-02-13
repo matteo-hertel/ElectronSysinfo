@@ -1,4 +1,5 @@
 var osModel = require("os");
+var Helper = require(__dirname + "/Utilities.js");
 var OS = {
     getUsedMemory: function() {
         return parseInt(OS.getTotalMemory() - osModel.freemem());
@@ -16,7 +17,6 @@ var OS = {
         return parseFloat((100 * OS.getUsedMemory()) / OS.getTotalMemory(), 2).toFixed(2);
     },
     getTotalMemoryFriendly: function(unit) {
-
         return Helper.convertTo(Math.round(OS.getTotalMemory()), unit);
     },
     getAllCpus: function() {

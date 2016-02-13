@@ -23,6 +23,9 @@ module.exports = function(Vue) {
                     });
 
                 }.bind(this), 500);
+            },
+            totalMemory: function(type) {
+                return OS.getTotalMemoryFriendly(type);
             }
         },
         ready: function() {
