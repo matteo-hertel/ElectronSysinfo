@@ -3,6 +3,7 @@
 
 <head>
     <title>SysInfo</title>
+    <link href="./css/bespoke.css" rel="stylesheet" type="text/css">
     <link href="./bower_components/c3/c3.min.css" rel="stylesheet" type="text/css">
     <link href="./bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="./bower_components/bootstrap-material-design/dist/css/bootstrap-material-design.min.css" rel="stylesheet" type="text/css">
@@ -10,59 +11,73 @@
 </head>
 
 <body>
-    <div class="container">
+    <div v-show="showSettings" class="navigation">
+
+        <div class="col-xs 12">
+            <h3>Settings</h3>
+            <h4>Components Visibility</h4>
+
+        </div>
         <div class="row">
-            <div class="col-xs-10">
 
-                <h2>SystemInfo</h2>
+
+            <div class="col-xs-12" v-for="component in components">
+
+                <input v-model="component" type="checkbox"> {{$key}} </label>
 
             </div>
-            <div class="col-xs-2 pull-right" style="position:rerlative">
-                <h3 class="pull-right" @click="toggleSettings()">
-                                <i class="glyphicon glyphicon-wrench"></i>
-                            </h3>
-                <div v-show="showSettings" class="row animated" transition="slide">
+        </div>
+    </div>
 
-                    <div class="col-xs 12">
-                        <h3>Settings</h3>
-                        <h4>Components Visibility</h4>
-
-                    </div>
-                    <div class="row">
+    <input type="checkbox" @click="toggleSettings()" id="nav-trigger" class="nav-trigger" />
+    <label for="nav-trigger"><i class="glyphicon glyphicon-wrench"></i></label>
+    <div class="site-wrap">
+        <div class="container-fluid">
+            <div class="row">
 
 
-                        <div class="col-xs-12" v-for="component in components">
+                <div class="col-xs-10">
 
-                            <input v-model="component" type="checkbox"> {{$key}} </label>
+                    <h2>SystemInfo</h2>
 
-                        </div>
-                    </div>
                 </div>
+
             </div>
-            <div class="col-xs-8">
-                <collapsible-panel show="true" v-show="components.Cpus">
-                    <template is="os" slot="heading">
-                        CPU
-                        <small>
+            <div class="row ">
+                <div class="col-xs-8">
+                    <collapsible-panel show="true" v-show="components.Cpus">
+                        <template is="os" slot="heading">
+                            CPU
+                            <small>
                             Your CPU
                             <os inline-template>
                                  {{cpus[0]}}
                             </os>
                         </small>
-                    </template>
-                    <template slot="body">
-                        <os inline-template>
-                            Your system has {{cpus.length}} virtual core based on a {{cpus[0]}} processor
+                        </template>
+                        <template slot="body">
+                            <os inline-template>
+                                Your system has {{cpus.length}} virtual core based on a {{cpus[0]}} processor
 
-                        </os>
+                            </os>
 
-                    </template>
+                        </template>
 
-                </collapsible-panel>
+                    </collapsible-panel>
 
+                </div>
+                <div class="col-xs-4" v-show="components.RamChart">
+                    <ram-chart></ram-chart>
+                </div>
             </div>
-            <div class="col-xs-4" v-show="components.RamChart">
-                <ram-chart></ram-chart>
+            <div class="row">
+
+                <div class="col-xs-12">
+
+                        <h4 v-show="noVisibleComponents">No components enabled, please use the sidebar menu to activate one or more components</h4>
+
+                </div>
+
             </div>
         </div>
     </div>

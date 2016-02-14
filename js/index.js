@@ -21,5 +21,18 @@ new Vue({
         toggleSettings: function() {
             this.showSettings = !this.showSettings;
         }
+    },
+    computed: {
+        noVisibleComponents: function() {
+            for (var i in this.components) {
+
+                if (this.components[i]) {
+
+                    return false;
+                }
+
+            }
+            return true;
+        }
     }
 });
