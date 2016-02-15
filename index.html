@@ -46,7 +46,7 @@
             <div class="row ">
                 <div class="col-xs-8">
                     <collapsible-panel show="true" v-show="components.Cpus">
-                        <template is="os" slot="heading">
+                        <template slot="heading">
                             CPU
                             <small>
                             Your CPU
@@ -64,17 +64,89 @@
                         </template>
 
                     </collapsible-panel>
+                    <collapsible-panel show="true" v-show="components.Machine">
+                        <template slot="heading">
+                            Machine
+                            <small>
+                                <os inline-template>
+                                    uptime: {{uptime}} hr(s)
+                                </os>
+                            </small>
+                        </template>
+                        <template slot="body">
+                            <os inline-template>
+                                <dl>
+                                    <dt>
+                                        Architecture
+                                    </dt>
+                                    <dd>
+                                        {{architecture}}
+                                    </dd>
+                                    <dt>
+                                        Type
+                                    </dt>
+                                    <dd>
+                                        {{type}}
+                                    </dd>
+                                    <dt>
+                                        Platform
+                                    </dt>
+                                    <dd>
+                                        {{platform}}
+                                    </dd>
+                                    <dt>
+                                        Release
+                                    </dt>
+                                    <dd>
+                                        {{release}}
+                                    </dd>
 
+                                </dl>
+
+
+                            </os>
+
+                        </template>
+
+                    </collapsible-panel>
+                    <collapsible-panel show="true" v-show="components.Host">
+                        <template slot="heading">
+                            Host
+                        </template>
+                        <template slot="body">
+                            <os inline-template>
+                                <dl>
+                                    <dt>
+                                        Host Name
+                                    </dt>
+                                    <dd>
+                                        {{hostname}}
+                                    </dd>
+                                    <dt>
+                                        Home Directory
+                                    </dt>
+                                    <dd>
+                                        <a @click="openHomedir()">{{homedir}}</a>
+                                    </dd>
+                                </dl>
+
+
+                            </os>
+
+                        </template>
+
+                    </collapsible-panel>
                 </div>
                 <div class="col-xs-4" v-show="components.RamChart">
                     <ram-chart></ram-chart>
                 </div>
             </div>
+
             <div class="row">
 
                 <div class="col-xs-12">
 
-                        <h4 v-show="noVisibleComponents">No components enabled, please use the sidebar menu to activate one or more components</h4>
+                    <h4 v-show="noVisibleComponents">No components enabled, please use the sidebar menu to activate one or more components</h4>
 
                 </div>
 

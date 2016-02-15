@@ -13,7 +13,10 @@ new Vue({
     data: {
         components: {
             "RamChart": true,
-            "Cpus": true
+            "Cpus": true,
+            "Machine": true,
+            "Host": true
+
         },
         showSettings: false
     },
