@@ -15,6 +15,7 @@ new Vue({
             "RamChart": true,
             "Cpus": true,
             "Machine": true,
+            "Network": true,
             "Host": true
 
         },

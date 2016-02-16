@@ -109,6 +109,30 @@
                         </template>
 
                     </collapsible-panel>
+                    <collapsible-panel show="true" v-show="components.Network">
+                        <template slot="heading">
+                            Network Interfaces
+
+                        </template>
+                        <template slot="body">
+                            <os inline-template>
+                                <div v-for="net in networkInterfaces">
+                                    <strong>{{$key}}</strong>
+                                    <dl v-for="i in net">
+                                        <dt>
+                                            {{$key}}
+                                        </dt>
+                                        <dd>
+                                            {{i}}
+                                        </dd>
+
+                                </div>
+
+                            </os>
+
+                        </template>
+
+                    </collapsible-panel>
                     <collapsible-panel show="true" v-show="components.Host">
                         <template slot="heading">
                             Host

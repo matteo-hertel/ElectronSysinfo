@@ -4,7 +4,8 @@ module.exports = function(Vue) {
     Vue.component("os", {
         data: function() {
             return {
-                allCpus: false
+                allCpus: false,
+                allNetworkInterfaces: false
             };
         },
         methods: {
@@ -13,6 +14,20 @@ module.exports = function(Vue) {
             }
         },
         computed: {
+            networkInterfaces: function() {
+                if (!this.allNetworkInterfaces) {
+                    var interfaces = OS.getAllNetworkInterfaces();
+                    var pool = {};
+                    for (var i in interfaces) {
+                        pool[i] = {};
+                        pool[i][interfaces[i][0].family] = interfaces[i][0].address;
+                        pool[i][interfaces[i][1].family] = interfaces[i][1].address;
+                    }
+                    this.allNetworkInterfaces = pool;
+                }
+                return this.allNetworkInterfaces;
+
+            },
             cpus: function() {
                 if (!this.allCpus) {
                     this.allCpus = OS.getAllCpus().map(function(el) {
