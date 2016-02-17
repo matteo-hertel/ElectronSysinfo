@@ -1,5 +1,12 @@
 {
   "name": "SysInfo",
   "version": "0.1.0",
-  "main": "main.js"
+  "main": "main.js",
+  "dependencies": {
+    "electron-prebuilt": "^0.36.7"
+  },
+  "scripts" : {
+        "buildWin" : "electron-packager . SysInfo --platform=win32 --arch=x64",
+        "buildMac" : "electron-packager . SysInfo --platform=darwin --arch=x64"
+    }
 }

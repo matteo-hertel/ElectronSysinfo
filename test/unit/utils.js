@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-var utils = require(__dirname + "/../../js/Helpers/Utilities.js")
+var utils = require(__dirname + "/../../js/Helpers/Utilities.js");
 
 describe('Utilities', function() {
     describe('#round()', function() {
